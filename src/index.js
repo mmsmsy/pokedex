@@ -1,11 +1,12 @@
 import {render} from 'react-dom';
 import React, {Component} from 'react';
 import fetch from 'isomorphic-fetch';
-import { Router, Route, Link } from 'react-router';
+import { Router, Route, Link, hashHistory } from 'react-router';
 
 class PokemonDetails extends Component{
   render(){
-    const {pokemon,id} = this.props;
+    const {id} = this.state;
+    let content;
     return <div className="pokemon--details">
             <div className="pokemon--details--sprite">
               <img src={`/public/sprites/${id}.png`} />
@@ -25,7 +26,7 @@ class Pokemon extends Component{
     const {pokemon,id} = this.props;
     return <div className="pokemon--species">
             <div className="pokemon--species--container">
-              <div className="${id} pokemon--species--name">{id + '. ' + pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</div>
+              <div className="pokemon--species--name"><ul><li><Link to={`/pokemon/${id}`}>{`${id}. ${pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}`}</Link></li></ul></div>
               <div className="pokemon--species--sprite">
                 <img src={`/public/sprites/${id}.png`} />
               </div>
@@ -91,4 +92,10 @@ class PokeApp extends Component{
   }
 }
 
-render(<PokeApp/>,document.getElementById('app'))
+render((
+  <Router history={hashHistory}>
+    <Route path="/" component={PokeApp}>
+      <Route path={`/pokemon/${id}`} component={PokemonDetails} />
+    </Route>
+  </Router>
+),document.getElementById('app'))

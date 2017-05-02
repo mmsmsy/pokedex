@@ -11,6 +11,21 @@ html, body{
   background: #cbd9ef;
     text-align : center;
 }
+a:link,
+a:visited {
+    color: #207394;
+    font-weight: bold;
+    font-family: sans-serif;
+    text-decoration: none;
+    text-shadow: none;
+    padding: 0;
+    margin: 0;
+}
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
 .pokeapp {
     padding : 16px;
 }
@@ -49,17 +64,13 @@ html, body{
 
 }
 .pokemon--species--container{
-    font-family: sans-serif;
     width: 100%;
     overflow: hidden;
     padding : 8px;
     padding-bottom: 25%;
     margin-top: 50px;
-    color: #207394;
     background: transparent;
-    text-shadow: none;
     cursor : pointer;
-    font-weight: bold;
     box-shadow: 1px 1px 10px rgba(0,0,0,0.1);
     transition: all 0.2s;
 }
