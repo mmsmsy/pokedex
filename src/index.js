@@ -3,7 +3,19 @@ import React, {Component} from 'react';
 import fetch from 'isomorphic-fetch';
 import { Router, Route, Link } from 'react-router';
 
-
+class PokemonDetails extends Component{
+  render(){
+    const {pokemon,id} = this.props;
+    return <div className="pokemon--details">
+            <div className="pokemon--details--sprite">
+              <img src={`/public/sprites/${id}.png`} />
+            </div>
+            <p>
+              Name: {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
+            </p>
+          </div>
+  }
+}
 
 //The Pokemon component will show an individual pokemon monster
 // It shows an image of the pokemon and
@@ -13,10 +25,10 @@ class Pokemon extends Component{
     const {pokemon,id} = this.props;
     return <div className="pokemon--species">
             <div className="pokemon--species--container">
+              <div className="${id} pokemon--species--name">{id + '. ' + pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</div>
               <div className="pokemon--species--sprite">
                 <img src={`/public/sprites/${id}.png`} />
               </div>
-              <div className="pokemon--species--name">{id + '. ' + pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</div>
             </div>
           </div>;
     }
@@ -41,7 +53,7 @@ class PokemonList extends Component{
     this.setState({
       loading : true
     });
-    fetch('http://pokeapi.co/api/v2/pokemon?limit=811').then(res=>res.json())
+    fetch('http://pokeapi.co/api/v2/pokemon').then(res=>res.json())
     .then(response=>{
       this.setState({
         species : response.results,
@@ -57,7 +69,7 @@ class PokemonList extends Component{
     if(fetched){
       content = <div className="pokemon--species--list">{species.map((pokemon,index)=><Pokemon key={pokemon.name} id={index+1} pokemon={pokemon}/>)}</div>;
     }else if(loading && !fetched){
-        content = <p> Loading ...</p>;
+        content = <p className="pokemon--loading"> Loading ...</p>;
     }
     else{
       content = <div/>;

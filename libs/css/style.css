@@ -1,0 +1,87 @@
+@font-face {
+    font-family: "Pokemon Hollow";
+    src: url(pokemon_hollow.ttf);
+}
+@font-face {
+    font-family: "Pokemon Solid";
+    src: url(pokemon_solid.ttf);
+}
+html, body{
+  font-family: sans-serif;
+  background: #cbd9ef;
+    text-align : center;
+}
+.pokeapp {
+    padding : 16px;
+}
+.pokeapp h1 {
+    font-family: "Pokemon Solid";
+    color: #ffcb05;
+    text-shadow: 5px 5px 1px #2a75bb, -5px -5px 1px #2a75bb;
+    font-size: 36px;
+    letter-spacing: 5px;
+}
+.pokeapp p {
+    font-family: "Pokemon Hollow";
+    font-size: 20px;
+    text-shadow: none;
+    color: black;
+}
+.pokemon--loading {
+    font-size: 18px;
+    color: gray;
+    font-family: "Pokemon Hollow";
+}
+.pokemon--species--list{
+    display : -webkit-box;
+    display : -ms-flexbox;
+    display : flex;
+    -ms-flex-wrap : wrap;
+        flex-wrap : wrap;
+    padding : 16px 0;
+}
+.pokemon--species{
+    font-size: 16px;
+    -ms-flex-preferred-size : 25%;
+        flex-basis : 25%;
+    padding : 8px;
+    box-sizing: border-box;
+
+}
+.pokemon--species--container{
+    font-family: sans-serif;
+    width: 100%;
+    overflow: hidden;
+    padding : 8px;
+    padding-bottom: 25%;
+    margin-top: 50px;
+    color: #207394;
+    background: transparent;
+    text-shadow: none;
+    cursor : pointer;
+    font-weight: bold;
+    box-shadow: 1px 1px 10px rgba(0,0,0,0.1);
+    transition: all 0.2s;
+}
+.pokemon--species--container:hover {
+    background: #becfea;
+    box-shadow: 2px 2px 10px white, -2px -2px 10px white;
+    transform: scale(1.1);
+}
+.pokemon--species--container img {
+    width: 100%;
+    -webkit-box-reflect: below -20px linear-gradient(rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 1) 400%)
+}
+
+@media only screen and (min-width: 1100px) {
+    .pokemon--species--container {
+        width: 90%;
+    }
+    .pokemon--species {
+        -ms-flex-preferred-size : 12.5%;
+            flex-basis : 12.5%;
+    }
+    .pokemon--species--container img {
+        width: 75%;
+    }
+}
