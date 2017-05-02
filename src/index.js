@@ -1,6 +1,7 @@
 import {render} from 'react-dom';
 import React, {Component} from 'react';
 import fetch from 'isomorphic-fetch';
+import { Router, Route, Link } from 'react-router';
 
 
 
@@ -15,7 +16,7 @@ class Pokemon extends Component{
               <div className="pokemon--species--sprite">
                 <img src={`/public/sprites/${id}.png`} />
               </div>
-              <div className="pokemon--species--name"> {pokemon.name} </div>
+              <div className="pokemon--species--name">{id + '. ' + pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</div>
             </div>
           </div>;
     }
@@ -40,7 +41,7 @@ class PokemonList extends Component{
     this.setState({
       loading : true
     });
-    fetch('http://pokeapi.co/api/v2/pokemon?limit=151').then(res=>res.json())
+    fetch('http://pokeapi.co/api/v2/pokemon?limit=811').then(res=>res.json())
     .then(response=>{
       this.setState({
         species : response.results,
@@ -72,7 +73,7 @@ class PokemonList extends Component{
 class PokeApp extends Component{
   render(){
     return <div className="pokeapp">
-      <h1> The Kanto PokeDex! </h1>
+      <h1> Complete I-VI gen. PokeDex! (Including Mega)</h1>
       <PokemonList/>
     </div>;
   }
