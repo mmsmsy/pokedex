@@ -1,13 +1,13 @@
 {
   "name": "pokedex-with-react",
   "version": "1.0.0",
-  "description": "",
+  "description": "Pokedex 7 generations plus Mega",
   "main": "index.js",
   "scripts": {
     "start": "node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Mateusz Mysiak @mmsmsy",
   "license": "ISC",
   "devDependencies": {
     "babel-cli": "^6.18.0",
