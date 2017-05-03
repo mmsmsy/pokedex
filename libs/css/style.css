@@ -82,21 +82,38 @@ a.back--to--list {
     overflow: hidden;
     padding: 20px 0;
     border-radius: 5px;
-    border: 1px solid transparent;
     border: 1px solid rgba(255,255,255,0.3);
+
 }
 .back--to--list:hover {
     border: 1px solid white;
 }
-.link--to--next,
-.link--to--prev {
-    position: absolute;
+a.link--to--next,
+a.link--to--prev {
+    width: auto;
+    padding: 50px 20px;
+    border-radius: 5px;
+    border: 1px solid rgba(255,255,255,0.3);
+    margin: 0;
+    position: absolute; top: 50%;
 }
-.link--to--next {
+a.link--to--next {
+    border-right: 0;
     right: 0;
 }
-.link--to--next {
+a.link--to--prev {
+    border-left: 0;
     left: 0;
+}
+a.link--to--next:hover,
+a.link--to--prev:hover {
+    border: 1px solid white;
+}
+a.link--to--next:hover {
+    border-right: 0;
+}
+a.link--to--prev:hover {
+    border-left: 0;
 }
 .pokemon--details {
     display: block;

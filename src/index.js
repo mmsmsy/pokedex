@@ -28,6 +28,13 @@ class PokemonDetails extends Component{
         errors: errors
       }))
   }
+  componentDidUpdate (prevProps) {
+    // respond to parameter change in /pokemon/:id url
+    let oldId = prevProps.params.id
+    let newId = this.props.params.id
+    if (newId !== oldId)
+      this.componentDidMount()
+  }
   render(){
     const {loading, pokemon, errors} = this.state;
     if (loading || !pokemon) {
@@ -48,7 +55,6 @@ class PokemonDetails extends Component{
         </div>
         <table style={styles}>
           <tbody><tr><td>Name</td><td>{pokemon.name}</td></tr></tbody>
-          <tbody><tr><td>Type</td><td>{pokemon.types[0].type.name}</td></tr></tbody>
           <tbody><tr><td>Base experience</td><td>{pokemon.base_experience}</td></tr></tbody>
           <tbody><tr><td>Weight</td><td>{pokemon.weight/10}kg</td></tr></tbody>
           <tbody><tr><td>Height</td><td>{pokemon.height*10}cm</td></tr></tbody>
@@ -101,7 +107,7 @@ class PokemonList extends Component{
     this.setState({
       loading : true
     });
-    fetch('http://pokeapi.co/api/v2/pokemon').then(res=>res.json())
+    fetch('http://pokeapi.co/api/v2/pokemon?limit=811').then(res=>res.json())
     .then(response=>{
       this.setState({
         species : response.results,
